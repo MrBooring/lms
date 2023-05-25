@@ -34,8 +34,9 @@ class _ProjectInfoState extends State<ProjectInfo> {
                     ),
                   ),
                 ),
+                Divider(),
                 Text(
-                  "50 words ==> Join our comprehensive medical course for aspiring healthcare professionals. Gain theoretical knowledge and practical skills in anatomy, physiology, pathology, pharmacology, and clinical practice. Expert faculty, interactive lectures, labs, and clinical rotations will empower you to make a difference in patients' lives. Start your transformative journey now!",
+                  "50 words ==> Join our comprehensive medical course for aspiring healthcare professionals. Gain theoretical knowledge and practical skills in anatomy, physiology, pathology, pharmacology, and clinical practice. Start your transformative journey now!",
                   textAlign: TextAlign.justify,
                   // overflow: TextOverflow.el lipsis,
                   style: TextStyle(
@@ -56,6 +57,41 @@ class _ProjectInfoState extends State<ProjectInfo> {
                     ],
                   ),
                 ),
+                Divider(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.live_tv_outlined),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      const Text(
+                        "23 Lessons",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.military_tech_outlined),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      const Text(
+                        "Certificate of Completion",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
@@ -65,7 +101,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                         width: size.width * .03,
                       ),
                       const Text(
-                        "Last Updated : 3/2023",
+                        "Learn at your Pace",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                         ),
@@ -90,6 +126,14 @@ class _ProjectInfoState extends State<ProjectInfo> {
                     ],
                   ),
                 ),
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(onPressed: () {}, child: Text("Wishlist")),
+                    ElevatedButton(onPressed: () {}, child: Text("Enroll"))
+                  ],
+                ),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
@@ -98,6 +142,108 @@ class _ProjectInfoState extends State<ProjectInfo> {
                         "This Course Includes",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.videocam),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      const Text(
+                        "CPR",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.assessment_outlined),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      const Text(
+                        "Assesment",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.videocam),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      const Text(
+                        "CPR",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.assessment_outlined),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      const Text(
+                        "Assesment",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.videocam),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      const Text(
+                        "CPR",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.assessment_outlined),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      const Text(
+                        "Assesment",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],

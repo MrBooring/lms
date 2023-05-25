@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.blue.shade100.withOpacity(.5),
         ),
