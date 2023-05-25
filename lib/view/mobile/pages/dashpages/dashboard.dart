@@ -9,10 +9,12 @@ import 'package:lms/view/mobile/pages/dashpages/profile.dart';
 import 'package:lms/view/mobile/pages/dashpages/search.dart';
 import 'package:lms/view/responsive.dart';
 
+// ignore: must_be_immutable
 class Dashboard extends GetView<DashController> {
   DashController dashController = Get.put(DashController());
 
-  @override
+  Dashboard({super.key});
+
   dashUiControll() {
     return dashpages[controller.selectedItemIndex.value];
   }
@@ -48,15 +50,15 @@ class Dashboard extends GetView<DashController> {
               },
               tabs: const [
                 GButton(
-                  icon: Icons.star,
+                  icon: Icons.star_border_outlined,
                   text: "Featured",
                 ),
                 GButton(
-                  icon: Icons.search,
-                  text: "Search",
+                  icon: Icons.article_outlined,
+                  text: "Articles",
                 ),
                 GButton(
-                  icon: Icons.play_arrow,
+                  icon: Icons.play_arrow_outlined,
                   text: "Enrolled",
                 ),
                 GButton(
