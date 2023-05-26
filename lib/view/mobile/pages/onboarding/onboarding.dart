@@ -38,96 +38,107 @@ class _OnboardingState extends State<Onboarding> {
                     ),
                   ),
                   Spacer(),
-                  Form(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Name",
-                          style: TextStyle(
-                            fontSize: size.height * .02,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height * .065,
-                          // width: size.width * .8,
-                          child: TextField(
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              contentPadding: EdgeInsets.symmetric(
-                                vertical: size.height * .019,
-                                horizontal: size.width * .03,
-                              ),
-                            ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Form(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Name",
                             style: TextStyle(
                               fontSize: size.height * .02,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                        ),
-                        Text(
-                          "Name",
-                          style: TextStyle(
-                            fontSize: size.height * .02,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Text(
-                          "Age",
-                          style: TextStyle(
-                            fontSize: size.height * .02,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height * .065,
-                          // width: size.width * .8,
-                          child: TextField(
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              contentPadding: EdgeInsets.symmetric(
-                                vertical: size.height * .019,
-                                horizontal: size.width * .03,
+                          SizedBox(
+                            height: size.height * .065,
+                            // width: size.width * .8,
+                            child: TextField(
+                              keyboardType: TextInputType.name,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: size.height * .019,
+                                  horizontal: size.width * .03,
+                                ),
+                              ),
+                              style: TextStyle(
+                                fontSize: size.height * .02,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
+                          ),
+                          SizedBox(
+                            height: size.height * .025,
+                          ),
+                          Text(
+                            "Age",
                             style: TextStyle(
                               fontSize: size.height * .02,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                        ),
-                        Text(
-                          "State",
-                          style: TextStyle(
-                            fontSize: size.height * .02,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        DropdownButtonFormField(
-                          items: ['Maharashtra', 'Gujrat', 'Goa']
-                              .map((String value) {
-                            return DropdownMenuItem(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                          onChanged: (value) {},
-                        ),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Get.toNamed("/dashboard");
-                              },
-                              child: Text("Explore Courses"),
+                          SizedBox(
+                            height: size.height * .065,
+                            // width: size.width * .8,
+                            child: TextField(
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: size.height * .019,
+                                  horizontal: size.width * .03,
+                                ),
+                              ),
+                              style: TextStyle(
+                                fontSize: size.height * .02,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: size.height * .025,
+                          ),
+                          Text(
+                            "State",
+                            style: TextStyle(
+                              fontSize: size.height * .02,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(
+                            height: size.height * .065,
+                            child: DropdownButtonFormField(
+                              isDense: true,
+                              items: ['Maharashtra', 'Gujrat', 'Goa']
+                                  .map((String value) {
+                                return DropdownMenuItem(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: size.height * .01,
+                                      horizontal: size.width * .05),
+                                  border: OutlineInputBorder()),
+                              onChanged: (value) {},
+                            ),
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Get.toNamed("/dashboard");
+                                },
+                                child: Text("Explore Courses"),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Spacer(

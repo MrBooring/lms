@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:lms/util/utility.dart';
+import 'package:lms/view/mobile/widgets/side_menu.dart';
 
 class Featured extends StatefulWidget {
   const Featured({super.key});
@@ -14,15 +15,12 @@ class _FeaturedState extends State<Featured> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SideMenu(),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
+
         foregroundColor: Colors.black,
-        toolbarHeight: size.height * .1,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-        ),
         actions: [
           SizedBox(
             height: size.height * .06,
@@ -40,57 +38,12 @@ class _FeaturedState extends State<Featured> {
             ),
           ),
         ],
-        title: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 3),
-          child: Container(
-            width: size.width,
-            height: size.height * .055,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  spreadRadius: -10,
-                  blurRadius: 10,
-                  offset: Offset(0, 10),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Material(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.search,
-                        size: 20,
-                      )),
-                ),
-                Expanded(
-                  child: TextFormField(
-                    maxLines: 1,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    color: Color(0xfff2f3f7),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Icon(
-                    Icons.close,
-                    size: size.height * .02,
-                  ),
-                ),
-              ],
-            ),
+        title: Text(
+          "Learn about your Health",
+          style: TextStyle(
+            fontSize: size.height * .028,
+            letterSpacing: 1,
+            fontWeight: FontWeight.w800,
           ),
         ),
       ),
@@ -100,8 +53,61 @@ class _FeaturedState extends State<Featured> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 3),
+                  child: Container(
+                    width: size.width,
+                    height: size.height * .055,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          spreadRadius: -10,
+                          blurRadius: 10,
+                          offset: Offset(0, 10),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Material(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.search,
+                                size: 20,
+                              )),
+                        ),
+                        Expanded(
+                          child: TextFormField(
+                            maxLines: 1,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          margin: EdgeInsets.all(3),
+                          decoration: BoxDecoration(
+                            color: Color(0xfff2f3f7),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Icon(
+                            Icons.close,
+                            size: size.height * .02,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 SizedBox(
-                  height: size.height * .35,
+                  height: size.height * .3,
                   child: ListView.builder(
                     itemCount: 5,
                     shrinkWrap: true,
@@ -121,8 +127,11 @@ class _FeaturedState extends State<Featured> {
                                 Container(
                                   width: size.width * .5,
                                   height: size.height * .17,
-                                  color: Colors.amber.shade100,
-                                  child: FlutterLogo(),
+                                  color: Colors.orange.shade100,
+                                  child: Image.asset(
+                                    "lib/assets/tempbanner/b1.jpg",
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 3),
@@ -202,8 +211,11 @@ class _FeaturedState extends State<Featured> {
                         Container(
                           width: size.width,
                           height: size.height * .2,
-                          color: Colors.amber.shade100,
-                          child: FlutterLogo(),
+                          color: Colors.orange.shade100,
+                          child: Image.asset(
+                            "lib/assets/tempbanner/b3.jpg",
+                            fit: BoxFit.fill,
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 3),
@@ -297,8 +309,11 @@ class _FeaturedState extends State<Featured> {
                               Container(
                                 width: size.width * .5,
                                 height: size.height * .17,
-                                color: Colors.amber.shade100,
-                                child: FlutterLogo(),
+                                color: Colors.orange.shade100,
+                                child: Image.asset(
+                                  "lib/assets/tempbanner/b2.jpg",
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 3),

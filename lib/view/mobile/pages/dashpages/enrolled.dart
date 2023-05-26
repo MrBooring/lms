@@ -13,8 +13,7 @@ class _EnrolledState extends State<Enrolled> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 231, 244, 255),
-      // appBar: AppBar(
+      backgroundColor: Colors.orange.shade100, // appBar: AppBar(
       //   title: Text(
       //     "Enrolled",
       //     style: ThemeData().textTheme.headlineLarge,
@@ -44,37 +43,48 @@ class _EnrolledState extends State<Enrolled> {
                   ),
                   Container(
                     child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CircleAvatar(
-                          maxRadius: size.height * .04,
-                        ),
-                        SizedBox(
-                          width: size.width * .1,
-                        ),
-                        Text(
-                          "Hi Siddhant",
-                          style: TextStyle(
-                            fontSize: size.height * .035,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue.shade900,
+                          backgroundColor: Colors.teal,
+                          maxRadius: size.height * .03,
+                          child: Image.asset(
+                            "lib/assets/userimages/male.png",
+                            fit: BoxFit.fill,
                           ),
                         ),
+                        Container(
+                          width: size.width * .7,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              "Hi Siddhant",
+                              style: TextStyle(
+                                fontSize: size.height * .035,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue.shade900,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Spacer(
+                          flex: 4,
+                        )
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: size.width * .6,
+                          width: size.width * .65,
                           child: Text(
                             "Heres a list of cources you've Enrolled in",
                             style: TextStyle(
-                              fontSize: size.height * .025,
-                              // fontWeight: FontWeight.bold,
+                              fontSize: size.height * .02,
+                              fontWeight: FontWeight.bold,
                               // color: Colors.blue.shade900,
                             ),
                           ),
@@ -110,14 +120,22 @@ class _EnrolledState extends State<Enrolled> {
                         // color: Colors.blue.shade900,
                       ),
                     ),
-                    Card(
-                      elevation: 2,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            spreadRadius: -10,
+                            blurRadius: 10,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                      ),
                       child: ListTile(
+                        tileColor: Colors.transparent,
                         dense: true,
-                        selected: true,
-                        enabled: true,
                         isThreeLine: true,
-                        selectedColor: Colors.black,
                         leading: IconButton(
                           onPressed: () {},
                           icon: Icon(
@@ -207,7 +225,10 @@ class _EnrolledState extends State<Enrolled> {
                                     child: Container(
                                       color: Colors.amber.shade100,
                                       width: size.width,
-                                      child: FlutterLogo(),
+                                      child: Image.asset(
+                                        "lib/assets/tempbanner/b${index + 1}.jpg",
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   ),
                                   Padding(

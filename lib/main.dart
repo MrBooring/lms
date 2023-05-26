@@ -20,9 +20,15 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        progressIndicatorTheme: Theme.of(context)
+            .progressIndicatorTheme
+            .copyWith(color: Colors.orange),
+        cardTheme: Theme.of(context).cardTheme.copyWith(
+              color: Color.fromARGB(255, 255, 254, 253),
+            ),
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.blue.shade100.withOpacity(.5),
+          backgroundColor: Colors.orange.shade100,
         ),
       ),
       initialRoute: "/",

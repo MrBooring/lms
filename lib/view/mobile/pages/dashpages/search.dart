@@ -14,7 +14,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           Padding(
@@ -119,7 +119,10 @@ class _SearchState extends State<Search> {
                                 leading: SizedBox(
                                   height: size.height * .04,
                                   width: size.width * .15,
-                                  child: FlutterLogo(),
+                                  child: Image.asset(
+                                    "lib/assets/tempbanner/b4.jpg",
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               ),
                               ListTile(
@@ -135,7 +138,10 @@ class _SearchState extends State<Search> {
                                 leading: SizedBox(
                                   height: size.height * .04,
                                   width: size.width * .15,
-                                  child: FlutterLogo(),
+                                  child: Image.asset(
+                                    "lib/assets/tempbanner/b4.jpg",
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               ),
                               ListTile(
@@ -151,7 +157,10 @@ class _SearchState extends State<Search> {
                                 leading: SizedBox(
                                   height: size.height * .04,
                                   width: size.width * .15,
-                                  child: FlutterLogo(),
+                                  child: Image.asset(
+                                    "lib/assets/tempbanner/b4.jpg",
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               )
                             ],
@@ -174,7 +183,10 @@ class _SearchState extends State<Search> {
                                 width: size.width,
                                 height: size.height * .17,
                                 color: Colors.amber.shade100,
-                                child: FlutterLogo(),
+                                child: Image.asset(
+                                  "lib/assets/tempbanner/b4.jpg",
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ),
                             SizedBox(

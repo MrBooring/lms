@@ -19,7 +19,12 @@ class Dashboard extends GetView<DashController> {
     return dashpages[controller.selectedItemIndex.value];
   }
 
-  var dashpages = [Featured(), Search(), Enrolled(), Favourites(), Profile()];
+  var dashpages = [
+    Featured(),
+    Search(),
+    Enrolled(),
+    Favourites(),
+  ];
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       desktopBody: Scaffold(),
@@ -36,14 +41,17 @@ class Dashboard extends GetView<DashController> {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
             child: GNav(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-              tabBackgroundColor: Colors.grey.shade100,
-              gap: 8,
+              // tabBackgroundColor: Colors.amber.shade50,
+              // gap: 8,
+              tabBorderRadius: 5,
               activeColor: Colors.black,
               rippleColor: Colors.grey.shade300,
+              // backgroundColor: Color.fromARGB(255, 215, 235, 253),
               hoverColor: Colors.grey.shade100,
+
               selectedIndex: controller.selectedItemIndex.value,
               onTabChange: (value) {
                 controller.selectedItemIndex.value = value;
@@ -64,10 +72,6 @@ class Dashboard extends GetView<DashController> {
                 GButton(
                   icon: Icons.favorite_outline,
                   text: "Favourites",
-                ),
-                GButton(
-                  icon: Icons.person_outline,
-                  text: "Profile",
                 ),
               ],
             ),
