@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:lms/controllers/onboarding_controller.dart';
 import 'package:lms/util/utility.dart';
 import 'package:lms/view/responsive.dart';
 
-class Onboarding extends StatefulWidget {
+class Onboarding extends GetView<OnboardingController> {
   const Onboarding({super.key});
 
-  @override
-  State<Onboarding> createState() => _OnboardingState();
-}
-
-class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
@@ -25,8 +22,10 @@ class _OnboardingState extends State<Onboarding> {
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: SizedBox(
                       height: size.height * .01,
-                      child: LinearProgressIndicator(
-                        value: .8,
+                      child: Obx(
+                        () => LinearProgressIndicator(
+                          value: controller.progress.value,
+                        ),
                       ),
                     ),
                   ),
@@ -51,24 +50,33 @@ class _OnboardingState extends State<Onboarding> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(
-                            height: size.height * .065,
-                            // width: size.width * .8,
-                            child: TextField(
-                              keyboardType: TextInputType.name,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                contentPadding: EdgeInsets.symmetric(
-                                  vertical: size.height * .019,
-                                  horizontal: size.width * .03,
+                          Obx(() => TextField(
+                                keyboardType: TextInputType.name,
+                                onChanged: (value) {
+                                  controller.nameValidations(value);
+                                },
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.deny(RegExp(
+                                      r'[0-9@#$%^&*()_+={}|[\]\\\<>\,.?/]')),
+                                ],
+                                onEditingComplete: () {
+                                  controller.progress.value = .3;
+                                },
+                                decoration: InputDecoration(
+                                  errorText: controller.errorname.value == ""
+                                      ? null
+                                      : controller.errorname.value,
+                                  border: OutlineInputBorder(),
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: size.height * .019,
+                                    horizontal: size.width * .03,
+                                  ),
                                 ),
-                              ),
-                              style: TextStyle(
-                                fontSize: size.height * .02,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
+                                style: TextStyle(
+                                  fontSize: size.height * .02,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              )),
                           SizedBox(
                             height: size.height * .025,
                           ),
@@ -79,12 +87,21 @@ class _OnboardingState extends State<Onboarding> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(
-                            height: size.height * .065,
-                            // width: size.width * .8,
-                            child: TextField(
+                          Obx(
+                            () => TextFormField(
                               keyboardType: TextInputType.number,
+                              onChanged: (value) {
+                                controller.ageValidations(value);
+                              },
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp(r'^[0-9]+$')),
+                                LengthLimitingTextInputFormatter(2)
+                              ],
                               decoration: InputDecoration(
+                                errorText: controller.errorage.value == ""
+                                    ? null
+                                    : controller.errorage.value,
                                 border: OutlineInputBorder(),
                                 contentPadding: EdgeInsets.symmetric(
                                   vertical: size.height * .019,
@@ -107,34 +124,35 @@ class _OnboardingState extends State<Onboarding> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(
-                            height: size.height * .065,
-                            child: DropdownButtonFormField(
-                              isDense: true,
-                              items: ['Maharashtra', 'Gujrat', 'Goa']
-                                  .map((String value) {
-                                return DropdownMenuItem(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                      vertical: size.height * .01,
-                                      horizontal: size.width * .05),
-                                  border: OutlineInputBorder()),
-                              onChanged: (value) {},
-                            ),
+                          DropdownButtonFormField(
+                            isDense: true,
+                            items: ['Maharashtra', 'Gujrat', 'Goa']
+                                .map((String value) {
+                              return DropdownMenuItem(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            decoration: InputDecoration(
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: size.height * .01,
+                                    horizontal: size.width * .05),
+                                border: OutlineInputBorder()),
+                            onChanged: (value) {
+                              controller.stateChanged(value);
+                            },
                           ),
                           Center(
                             child: Padding(
                               padding: const EdgeInsets.all(15),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Get.toNamed("/dashboard");
-                                },
-                                child: Text("Explore Courses"),
-                              ),
+                              child: Obx(() => ElevatedButton(
+                                    onPressed: controller.progress.value == .95
+                                        ? () {
+                                            Get.toNamed("/dashboard");
+                                          }
+                                        : null,
+                                    child: Text("Explore Courses"),
+                                  )),
                             ),
                           ),
                         ],

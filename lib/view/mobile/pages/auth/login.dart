@@ -52,13 +52,14 @@ class Login extends GetView<LoginController> {
                         ),
                       ),
                       Obx(() => TextField(
-                            controller: controller.phnocontroller,
+                            autofocus: true,
+                            enableSuggestions: true,
                             inputFormatters: [
-                              FilteringTextInputFormatter.deny(RegExp(r'[.*]')),
-                              LengthLimitingTextInputFormatter(10)
+                              FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9]')),
+                              LengthLimitingTextInputFormatter(10),
                             ],
                             onChanged: (value) {
-                              print(value);
                               controller.validation(value);
                             },
                             keyboardType: TextInputType.number,
@@ -91,24 +92,26 @@ class Login extends GetView<LoginController> {
                           ),
                         ),
                       ),
-                      TextField(
-                        enabled: controller.isOtpSent.value,
-                        textAlign: TextAlign.center,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.deny(RegExp(r'[.*]')),
-                          LengthLimitingTextInputFormatter(4)
-                        ],
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: size.height * .019,
-                            horizontal: size.width * .03,
+                      Obx(
+                        () => TextField(
+                          enabled: controller.isOtpSent.value,
+                          textAlign: TextAlign.center,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(RegExp(r'[.*]')),
+                            LengthLimitingTextInputFormatter(4)
+                          ],
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: size.height * .019,
+                              horizontal: size.width * .03,
+                            ),
                           ),
-                        ),
-                        style: TextStyle(
-                          fontSize: size.height * .02,
-                          fontWeight: FontWeight.w500,
+                          style: TextStyle(
+                            fontSize: size.height * .02,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -117,10 +120,12 @@ class Login extends GetView<LoginController> {
                       Center(
                         child: Obx(
                           () => ElevatedButton(
-                            onPressed: () {
-                              controller
-                                  .validation(controller.phnocontroller.text);
-                            },
+                            style: ElevatedButton.styleFrom(),
+                            onPressed: controller.isnumvalid.value == true
+                                ? () {
+                                    controller.sendOtp();
+                                  }
+                                : null,
                             child: Text(controller.isOtpSent.value == false
                                 ? "Request OTP"
                                 : "Login"),

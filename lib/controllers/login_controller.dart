@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  TextEditingController phnocontroller = TextEditingController();
   TextEditingController otpcontroller = TextEditingController();
   var phoneno = "".obs;
   var otp = "".obs;
@@ -14,20 +13,33 @@ class LoginController extends GetxController {
 
   validation(value) {
     if (value.length == 10) {
-      if (value == "0123456789") {
-        errortext.value = "Please enter a valid number";
-        isnumvalid.value = true;
-      } else {
-        phoneno.value = phnocontroller.value.text;
-        sendOtp();
-      }
+      isnumvalid.value = true;
+      errortext.value = "";
+      phoneno.value = value;
+      // sendOtp();
     } else if (value.length < 10 && value.length > 6) {
+      isnumvalid.value = false;
       errortext.value = "Number must be 10 digits";
     }
     log(errortext.value);
   }
 
   void sendOtp() {
-    isOtpSent.value = true;
+    if (isOtpSent.value == true) {
+      Get.toNamed("/onboarding");
+    }
+    if (phoneno.value == "0123456789") {
+      isnumvalid.value = false;
+      errortext.value = "Please enter a valid number";
+      isOtpSent.value = false;
+    } else {
+      isOtpSent.value = true;
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    otpcontroller.dispose();
   }
 }

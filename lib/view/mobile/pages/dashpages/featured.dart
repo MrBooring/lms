@@ -304,7 +304,7 @@ class _FeaturedState extends State<Featured> {
                   ],
                 ),
                 SizedBox(
-                  height: size.height * .29,
+                  height: size.height * .3,
                   child: ListView.builder(
                     itemCount: 5,
                     shrinkWrap: true,
@@ -327,56 +327,47 @@ class _FeaturedState extends State<Featured> {
                                     fit: BoxFit.fill,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 3),
-                                  child: Text(
-                                    "The Complete Guide: First Aid",
-                                    maxLines: 2,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: size.height * .02,
-                                    ),
+                                Text(
+                                  "The Complete Guide: First Aid",
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: size.height * .02,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 3),
-                                  child: Text(
-                                    "Dr Dinesh dayanand",
-                                    maxLines: 2,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.grey.shade700,
-                                      fontSize: size.height * .02,
-                                    ),
+                                Text(
+                                  "Dr Dinesh dayanand",
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.grey.shade700,
+                                    fontSize: size.height * .018,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 3),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "4.3",
-                                        style: TextStyle(
-                                          color: Colors.orange.shade800,
-                                        ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "4.3",
+                                      style: TextStyle(
+                                        color: Colors.orange.shade800,
                                       ),
-                                      IgnorePointer(
-                                        child: RatingBar.builder(
-                                          initialRating: 3,
-                                          minRating: 1,
-                                          direction: Axis.horizontal,
-                                          allowHalfRating: true,
-                                          itemCount: 5,
-                                          itemSize: size.height * .02,
-                                          itemBuilder: (context, _) => Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                          ),
-                                          onRatingUpdate: (rating) {},
+                                    ),
+                                    IgnorePointer(
+                                      child: RatingBar.builder(
+                                        initialRating: 3,
+                                        minRating: 1,
+                                        direction: Axis.horizontal,
+                                        allowHalfRating: true,
+                                        itemCount: 5,
+                                        itemSize: size.height * .02,
+                                        itemBuilder: (context, _) => Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
                                         ),
-                                      )
-                                    ],
-                                  ),
+                                        onRatingUpdate: (rating) {},
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ],
                             ),

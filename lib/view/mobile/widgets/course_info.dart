@@ -61,7 +61,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                           fontSize: size.height * .02,
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Row(
                           children: [
@@ -144,7 +144,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                         ),
                       ),
                       Divider(),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Row(
                           children: [

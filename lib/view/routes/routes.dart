@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:lms/binders/login_binder.dart';
+import 'package:lms/binders/login_bindings.dart';
+import 'package:lms/binders/onboarding_bindings.dart';
 import 'package:lms/view/mobile/pages/auth/login.dart';
 import 'package:lms/view/mobile/pages/dashpages/dashboard.dart';
 import 'package:lms/view/mobile/pages/onboarding/onboarding.dart';
@@ -14,6 +15,7 @@ var routes = [
   GetPage(
     name: "/onboarding",
     page: () => Onboarding(),
+    binding: OnbordingBindings(),
   ),
   GetPage(
     name: "/dashboard",
