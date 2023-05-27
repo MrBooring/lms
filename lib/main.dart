@@ -23,9 +23,10 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         progressIndicatorTheme: Theme.of(context)
             .progressIndicatorTheme
-            .copyWith(color: Colors.orange),
+            .copyWith(color: Color.fromARGB(255, 235, 142, 3)),
         cardTheme: Theme.of(context).cardTheme.copyWith(
-              color: Color.fromARGB(255, 255, 254, 253),
+            // color: Color.fromARGB(255, 255, 254, 253),
+            // color: Colors.cyan.shade50
             ),
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.orange.shade100,
