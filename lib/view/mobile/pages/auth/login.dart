@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
+import 'package:lms/controllers/login_controller.dart';
 import 'package:lms/util/utility.dart';
 import 'package:lms/view/responsive.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Login extends GetView<LoginController> {
+  Login({super.key});
 
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
   var tempbool = 0.obs;
   @override
   Widget build(BuildContext context) {
@@ -55,24 +51,32 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: size.height * .065,
-                        // width: size.width * .8,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: size.height * .019,
-                              horizontal: size.width * .03,
+                      Obx(() => TextField(
+                            controller: controller.phnocontroller,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.deny(RegExp(r'[.*]')),
+                              LengthLimitingTextInputFormatter(10)
+                            ],
+                            onChanged: (value) {
+                              print(value);
+                              controller.validation(value);
+                            },
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              errorText: controller.errortext.value.isEmpty
+                                  ? null
+                                  : controller.errortext.value,
+                              border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: size.height * .019,
+                                horizontal: size.width * .03,
+                              ),
                             ),
-                          ),
-                          style: TextStyle(
-                            fontSize: size.height * .02,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
+                            style: TextStyle(
+                              fontSize: size.height * .02,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )),
                       SizedBox(
                         height: size.height * .02,
                       ),
@@ -87,42 +91,41 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: size.height * .065,
-                        // width: size.width * .8,
-                        child: TextField(
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: size.height * .019,
-                              horizontal: size.width * .03,
-                            ),
+                      TextField(
+                        enabled: controller.isOtpSent.value,
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.deny(RegExp(r'[.*]')),
+                          LengthLimitingTextInputFormatter(4)
+                        ],
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.symmetric(
+                            vertical: size.height * .019,
+                            horizontal: size.width * .03,
                           ),
-                          style: TextStyle(
-                            fontSize: size.height * .02,
-                            fontWeight: FontWeight.w500,
-                          ),
+                        ),
+                        style: TextStyle(
+                          fontSize: size.height * .02,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       SizedBox(
                         height: size.height * .02,
                       ),
                       Center(
-                        child: ObxValue(
-                            (isOtpSent) => ElevatedButton(
-                                  onPressed: () {
-                                    login(isOtpSent.value);
-                                    print(isOtpSent.value);
-                                    isOtpSent.value = !isOtpSent.value;
-                                    print(isOtpSent.value);
-                                  },
-                                  child: Text(isOtpSent.value == false
-                                      ? "Request OTP"
-                                      : "Login"),
-                                ),
-                            false.obs),
+                        child: Obx(
+                          () => ElevatedButton(
+                            onPressed: () {
+                              controller
+                                  .validation(controller.phnocontroller.text);
+                            },
+                            child: Text(controller.isOtpSent.value == false
+                                ? "Request OTP"
+                                : "Login"),
+                          ),
+                        ),
                       )
                     ],
                   ),

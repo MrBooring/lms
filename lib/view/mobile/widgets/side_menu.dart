@@ -23,7 +23,7 @@ class _SideMenuState extends State<SideMenu> {
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.deepOrange.shade100,
+                  color: Colors.orange.shade100,
                 ),
               ),
               ListTile(
