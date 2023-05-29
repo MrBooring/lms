@@ -41,4 +41,9 @@ class OnboardingController extends GetxController {
       progress.value = .95;
     }
   }
+
+  homepage() {
+    if (errorname.value == "" && errorage == "" && state.value != "")
+      Get.toNamed("/dashboard");
+  }
 }

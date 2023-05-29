@@ -160,7 +160,7 @@ class Onboarding extends GetView<OnboardingController> {
                                       onPressed:
                                           controller.progress.value == .95
                                               ? () {
-                                                  Get.toNamed("/dashboard");
+                                                  controller.homepage();
                                                 }
                                               : null,
                                       child: Text("Explore Courses"),

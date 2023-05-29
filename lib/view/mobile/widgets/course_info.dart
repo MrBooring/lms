@@ -48,7 +48,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                           ElevatedButton(
                               onPressed: () {}, child: Text("Wishlist")),
                           ElevatedButton(
-                              onPressed: () {}, child: Text("Enroll"))
+                              onPressed: () {}, child: Text("Enroll Now"))
                         ],
                       ),
                       Divider(),
