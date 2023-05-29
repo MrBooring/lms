@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lms/util/utility.dart';
 import 'package:intl/intl.dart';
 
@@ -217,50 +218,55 @@ class _EnrolledState extends State<Enrolled> {
                           itemCount: 5,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            return Container(
-                              color: Color.fromARGB(255, 240, 240, 240),
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      color: Colors.amber.shade100,
-                                      width: size.width,
-                                      child: Image.asset(
-                                        "lib/assets/tempbanner/b${index + 1}.jpg",
-                                        fit: BoxFit.fill,
+                            return GestureDetector(
+                              onTap: () {
+                                Get.toNamed("/watchcourse");
+                              },
+                              child: Container(
+                                color: Color.fromARGB(255, 240, 240, 240),
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        color: Colors.amber.shade100,
+                                        width: size.width,
+                                        child: Image.asset(
+                                          "lib/assets/tempbanner/b${index + 1}.jpg",
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(5),
-                                          child: Text(
-                                            "First Aid Masterclass",
-                                            style: ThemeData()
-                                                .textTheme
-                                                .labelLarge!
-                                                .copyWith(
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(5),
+                                            child: Text(
+                                              "First Aid Masterclass",
+                                              style: ThemeData()
+                                                  .textTheme
+                                                  .labelLarge!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                            ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          child: LinearProgressIndicator(
-                                            value: .6,
-                                            color: Colors.orange,
-                                            backgroundColor:
-                                                Colors.amber.shade300,
-                                          ),
-                                        )
-                                      ],
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                            child: LinearProgressIndicator(
+                                              value: .6,
+                                              color: Colors.orange,
+                                              backgroundColor:
+                                                  Colors.amber.shade300,
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             );
                           },
