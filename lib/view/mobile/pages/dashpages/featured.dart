@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lms/util/utility.dart';
 import 'package:lms/view/mobile/widgets/courselist_card.dart';
-import 'package:lms/view/mobile/widgets/side_menu.dart';
+import 'package:lms/view/mobile/pages/sidemenu/side_menu.dart';
 
 class Featured extends StatefulWidget {
   const Featured({super.key});
@@ -39,11 +39,14 @@ class _FeaturedState extends State<Featured> {
         ],
         title: Text(
           "Learn about your Health",
-          style: TextStyle(
-            fontSize: size.height * .028,
-            letterSpacing: 1,
-            fontWeight: FontWeight.w800,
-          ),
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                fontSize: size.height * .022,
+              ),
+          // style: TextStyle(
+          //   fontSize: size.height * .028,
+          //   letterSpacing: 1,
+          //   fontWeight: FontWeight.w800,
+          // ),
         ),
       ),
       body: SafeArea(
@@ -127,18 +130,9 @@ class _FeaturedState extends State<Featured> {
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       mainAxisExtent: size.height * .28, crossAxisCount: 2),
+                  itemCount: 5,
                   itemBuilder: (context, index) {
-                    return SizedBox(
-                      height: size.height * .5,
-                      child: ListView.builder(
-                        itemCount: 5,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return CourseListCard();
-                        },
-                      ),
-                    );
+                    return CourseListCard();
                   },
                 ),
               )

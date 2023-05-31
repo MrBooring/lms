@@ -26,20 +26,21 @@ class _EnrolledState extends State<Enrolled> {
             Container(
               // height: size.height * .27,
               // width: size.width,
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        DateFormat('dd MMMM yy').format(
-                          DateTime.now(),
-                        ),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: size.height * .02),
-                      ),
+                          DateFormat('dd MMMM yy').format(
+                            DateTime.now(),
+                          ),
+                          style: Theme.of(context).textTheme.labelLarge
+                          // style: TextStyle(
+                          //     fontWeight: FontWeight.bold,
+                          //     fontSize: size.height * .02),
+                          ),
                     ],
                   ),
                   Container(
@@ -58,17 +59,17 @@ class _EnrolledState extends State<Enrolled> {
                           width: size.width * .7,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Text(
-                              "Hi Siddhant",
-                              style: TextStyle(
-                                fontSize: size.height * .035,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue.shade900,
-                              ),
-                            ),
+                            child: Text("Hi Siddhant",
+                                style: Theme.of(context).textTheme.titleLarge
+                                // style: TextStyle(
+                                //   fontSize: size.height * .035,
+                                //   fontWeight: FontWeight.bold,
+                                //   color: Colors.blue.shade900,
+                                // ),
+                                ),
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 4,
                         )
                       ],
@@ -82,13 +83,14 @@ class _EnrolledState extends State<Enrolled> {
                         SizedBox(
                           width: size.width * .65,
                           child: Text(
-                            "Heres a list of cources you've Enrolled in",
-                            style: TextStyle(
-                              fontSize: size.height * .02,
-                              fontWeight: FontWeight.bold,
-                              // color: Colors.blue.shade900,
-                            ),
-                          ),
+                              "Heres a list of cources you've Enrolled in",
+                              style: Theme.of(context).textTheme.labelLarge
+                              // style: TextStyle(
+                              //   fontSize: size.height * .02,
+                              //   fontWeight: FontWeight.bold,
+                              //   // color: Colors.blue.shade900,
+                              // ),
+                              ),
                         ),
                       ],
                     ),
@@ -99,13 +101,13 @@ class _EnrolledState extends State<Enrolled> {
             Expanded(
               child: Container(
                 // width: size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.elliptical(50, 40),
                       topRight: Radius.elliptical(50, 40),
                     )),
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 30,
                   left: 20,
                   right: 20,
@@ -113,16 +115,19 @@ class _EnrolledState extends State<Enrolled> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Continue : ",
-                      style: TextStyle(
-                        fontSize: size.height * .025,
-                        fontWeight: FontWeight.bold,
-                        // color: Colors.blue.shade900,
-                      ),
-                    ),
+                    Text("Continue : ",
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(fontWeight: FontWeight.bold)
+                        // style: TextStyle(
+                        //   fontSize: size.height * .025,
+                        //   fontWeight: FontWeight.bold,
+                        //   // color: Colors.blue.shade900,
+                        // ),
+                        ),
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
@@ -144,12 +149,13 @@ class _EnrolledState extends State<Enrolled> {
                             size: size.height * .035,
                           ),
                         ),
-                        title: Text(
-                          "First Aid Course",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: size.height * .025),
-                        ),
+                        title: Text("First Aid Course",
+                            style: Theme.of(context).textTheme.titleMedium!
+
+                            // style: TextStyle(
+                            //     fontWeight: FontWeight.bold,
+                            //     fontSize: size.height * .025),
+                            ),
                         subtitle: Column(
                           children: [
                             Row(
@@ -161,12 +167,13 @@ class _EnrolledState extends State<Enrolled> {
                                 SizedBox(
                                   width: size.width * .03,
                                 ),
-                                Text(
-                                  "Hand Positions for a CPR",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                                Text("Hand Positions for a CPR",
+                                    style:
+                                        Theme.of(context).textTheme.labelMedium
+                                    // style: TextStyle(
+                                    //   fontWeight: FontWeight.bold,
+                                    // ),
+                                    ),
                               ],
                             ),
                             SizedBox(
@@ -177,17 +184,14 @@ class _EnrolledState extends State<Enrolled> {
                                 CircleAvatar(
                                   maxRadius: size.height * .01,
                                   backgroundColor: Colors.transparent,
-                                  child: FlutterLogo(),
+                                  child: const FlutterLogo(),
                                 ),
                                 SizedBox(
                                   width: size.width * .03,
                                 ),
-                                Text(
-                                  "Dr. Dikshit Deshpande",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                                Text("Dr. Dikshit Deshpande",
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall),
                               ],
                             )
                           ],
@@ -196,20 +200,23 @@ class _EnrolledState extends State<Enrolled> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        "Your Courses : ",
-                        style: TextStyle(
-                          fontSize: size.height * .025,
-                          fontWeight: FontWeight.bold,
-                          // color: Colors.blue.shade900,
-                        ),
-                      ),
+                      child: Text("Your Courses : ",
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  )
+                          // style: TextStyle(
+                          //   fontSize: size.height * .025,
+                          //   fontWeight: FontWeight.bold,
+                          //   // color: Colors.blue.shade900,
+                          // ),
+                          ),
                     ),
                     Expanded(
                       child: SizedBox(
                         child: GridView.builder(
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             childAspectRatio: 1.2,
                             crossAxisSpacing: 10,
@@ -223,7 +230,7 @@ class _EnrolledState extends State<Enrolled> {
                                 Get.toNamed("/watchcourse");
                               },
                               child: Container(
-                                color: Color.fromARGB(255, 240, 240, 240),
+                                color: const Color.fromARGB(255, 240, 240, 240),
                                 child: Column(
                                   children: [
                                     Expanded(
@@ -253,7 +260,7 @@ class _EnrolledState extends State<Enrolled> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                                 horizontal: 10),
                                             child: LinearProgressIndicator(
                                               value: .6,

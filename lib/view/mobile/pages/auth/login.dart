@@ -5,6 +5,7 @@ import 'package:lms/controllers/login_controller.dart';
 import 'package:lms/util/utility.dart';
 import 'package:lms/view/responsive.dart';
 
+// ignore: must_be_immutable
 class Login extends GetView<LoginController> {
   Login({super.key});
 
@@ -121,11 +122,13 @@ class Login extends GetView<LoginController> {
                       child: Obx(
                         () => ElevatedButton(
                           style: ElevatedButton.styleFrom(),
-                          onPressed: controller.isnumvalid.value == true
-                              ? () {
-                                  controller.sendOtp();
-                                }
-                              : null,
+                          onPressed:
+                              // controller.isnumvalid.value == true
+                              //     ?
+                              () {
+                            controller.sendOtp();
+                          },
+                          // : null,
                           child: Text(controller.isOtpSent.value == false
                               ? "Request OTP"
                               : "Login"),

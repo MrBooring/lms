@@ -5,7 +5,6 @@ import 'package:lms/controllers/dash_controller.dart';
 import 'package:lms/view/mobile/pages/dashpages/enrolled.dart';
 import 'package:lms/view/mobile/pages/dashpages/favourites.dart';
 import 'package:lms/view/mobile/pages/dashpages/featured.dart';
-import 'package:lms/view/mobile/pages/dashpages/profile.dart';
 import 'package:lms/view/mobile/pages/dashpages/search.dart';
 import 'package:lms/view/responsive.dart';
 
@@ -71,7 +70,7 @@ class Dashboard extends GetView<DashController> {
                 ),
                 GButton(
                   icon: Icons.favorite_outline,
-                  text: "Favourites",
+                  text: "WishList",
                 ),
               ],
             ),

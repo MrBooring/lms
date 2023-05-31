@@ -162,7 +162,9 @@ class Onboarding extends GetView<OnboardingController> {
                                               ? () {
                                                   controller.homepage();
                                                 }
-                                              : null,
+                                              : () {
+                                                  Get.toNamed("/dashboard");
+                                                },
                                       child: Text("Explore Courses"),
                                     )),
                               ),

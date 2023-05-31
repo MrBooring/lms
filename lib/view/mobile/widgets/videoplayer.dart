@@ -1,7 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:lms/controllers/watch_course_controller.dart';
 
 class VideoPlayer extends GetView<WatchCourseController> {

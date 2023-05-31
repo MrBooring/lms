@@ -39,24 +39,18 @@ class _CourseListCardState extends State<CourseListCard> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 0),
-                      child: Text(
-                        "The Complete Guide: First Aid ddv",
+                      child: Text("The Complete Guide: First Aid ddv",
+                          maxLines: 2,
+                          style: Theme.of(context).textTheme.labelLarge
+                          // style: TextStyle(
+                          //   fontWeight: FontWeight.bold,
+                          //   fontSize: size.height * .018,
+                          // ),
+                          ),
+                    ),
+                    Text("Dr Dinesh dayanand",
                         maxLines: 2,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: size.height * .018,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      "Dr Dinesh dayanand",
-                      maxLines: 2,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey.shade700,
-                        fontSize: size.height * .017,
-                      ),
-                    ),
+                        style: Theme.of(context).textTheme.labelSmall),
                     Row(
                       children: [
                         Text(
@@ -84,12 +78,8 @@ class _CourseListCardState extends State<CourseListCard> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 3),
-                      child: Text(
-                        "₹245",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child: Text("₹245",
+                          style: Theme.of(context).textTheme.labelLarge),
                     )
                   ],
                 ),
