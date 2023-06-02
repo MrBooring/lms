@@ -23,15 +23,19 @@ class _CourseListCardState extends State<CourseListCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: size.width * .5,
-                height: size.height * .14,
-                // color: Colors.orange.shade100,
-                child: Image.asset(
-                  "lib/assets/tempbanner/b1.jpg",
-                  fit: BoxFit.fill,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  width: size.width * .5,
+                  height: size.height * .14,
+                  // color: Colors.orange.shade100,
+                  child: Image.asset(
+                    "lib/assets/tempbanner/b1.jpg",
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
+              Spacer(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 7, vertical: 4),
                 child: Column(
@@ -83,7 +87,8 @@ class _CourseListCardState extends State<CourseListCard> {
                     )
                   ],
                 ),
-              )
+              ),
+              Spacer(),
             ],
           ),
         ),

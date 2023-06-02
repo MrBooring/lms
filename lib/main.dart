@@ -18,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData.light().copyWith(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         progressIndicatorTheme: Theme.of(context)
@@ -26,8 +26,7 @@ class _MyAppState extends State<MyApp> {
             .copyWith(color: Color.fromARGB(255, 235, 142, 3)),
         cardTheme: Theme.of(context).cardTheme.copyWith(
             // color: Color.fromARGB(255, 255, 254, 253),
-            // color: Colors.cyan.shade50
-            ),
+            color: Color.fromARGB(255, 255, 255, 255)),
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.orange.shade100,
           // backgroundColor: Color(0xffffba89),

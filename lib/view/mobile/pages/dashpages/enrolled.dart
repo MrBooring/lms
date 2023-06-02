@@ -229,17 +229,18 @@ class _EnrolledState extends State<Enrolled> {
                               onTap: () {
                                 Get.toNamed("/watchcourse");
                               },
-                              child: Container(
-                                color: const Color.fromARGB(255, 240, 240, 240),
+                              child: Card(
                                 child: Column(
                                   children: [
                                     Expanded(
-                                      child: Container(
-                                        color: Colors.amber.shade100,
-                                        width: size.width,
-                                        child: Image.asset(
-                                          "lib/assets/tempbanner/b${index + 1}.jpg",
-                                          fit: BoxFit.fill,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Container(
+                                          width: size.width,
+                                          child: Image.asset(
+                                            "lib/assets/tempbanner/b${index + 1}.jpg",
+                                            fit: BoxFit.fill,
+                                          ),
                                         ),
                                       ),
                                     ),
