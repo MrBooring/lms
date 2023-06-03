@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/view/mobile/pages/dashpages/dashboard.dart';
+import 'package:get/get.dart';
+import 'package:lms/view/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,14 +16,24 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData.light().copyWith(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        progressIndicatorTheme: Theme.of(context)
+            .progressIndicatorTheme
+            .copyWith(color: Color.fromARGB(255, 235, 142, 3)),
+        cardTheme: Theme.of(context).cardTheme.copyWith(
+            // color: Color.fromARGB(255, 255, 254, 253),
+            color: Color.fromARGB(255, 255, 255, 255)),
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.blue.shade100.withOpacity(.5),
+          backgroundColor: Colors.orange.shade100,
+          // backgroundColor: Color(0xffffba89),
         ),
       ),
-      home: Dashboard(),
+      initialRoute: "/",
+      getPages: routes,
     );
   }
 }

@@ -13,7 +13,7 @@ class _FavouritesState extends State<Favourites> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Favourites"),
+        title: Text("Wishlist"),
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
         elevation: 0,
@@ -44,7 +44,7 @@ class _FavouritesState extends State<Favourites> {
               ),
             ),
             Text(
-              "Your Favourites goes here",
+              "Your Wishlist goes here",
               style: TextStyle(
                 fontSize: size.height * .02,
               ),
