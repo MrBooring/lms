@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lms/view/mobile/widgets/badges.dart';
 import 'package:lms/view/mobile/widgets/searchchips.dart';
 
 class DashController extends GetxController {
@@ -26,7 +25,6 @@ class DashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    profilebadges.value = Badges().buildbadges(badges);
     searchchip.value = SearchChips().buildchips(chiplabel);
   }
 }

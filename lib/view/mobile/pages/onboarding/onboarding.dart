@@ -10,6 +10,8 @@ class Onboarding extends GetView<OnboardingController> {
 
   @override
   Widget build(BuildContext context) {
+    var textsize = MediaQuery.of(context).textScaleFactor;
+    Size size = MediaQuery.of(context).size;
     return ResponsiveLayout(
         mobileBody: Scaffold(
           body: Container(
@@ -41,7 +43,7 @@ class Onboarding extends GetView<OnboardingController> {
                     Text(
                       "Help us to Set up your Account",
                       style: TextStyle(
-                        fontSize: size.height * .025,
+                        fontSize: textsize * 20,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -57,7 +59,7 @@ class Onboarding extends GetView<OnboardingController> {
                             Text(
                               "Name",
                               style: TextStyle(
-                                fontSize: size.height * .02,
+                                fontSize: textsize * 15,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -84,7 +86,7 @@ class Onboarding extends GetView<OnboardingController> {
                                     ),
                                   ),
                                   style: TextStyle(
-                                    fontSize: size.height * .02,
+                                    fontSize: textsize * 15,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 )),
@@ -94,7 +96,7 @@ class Onboarding extends GetView<OnboardingController> {
                             Text(
                               "Age",
                               style: TextStyle(
-                                fontSize: size.height * .02,
+                                fontSize: textsize * 15,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -120,7 +122,7 @@ class Onboarding extends GetView<OnboardingController> {
                                   ),
                                 ),
                                 style: TextStyle(
-                                  fontSize: size.height * .02,
+                                  fontSize: textsize * 15,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -131,7 +133,7 @@ class Onboarding extends GetView<OnboardingController> {
                             Text(
                               "State",
                               style: TextStyle(
-                                fontSize: size.height * .02,
+                                fontSize: textsize * 15,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

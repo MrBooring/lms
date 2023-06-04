@@ -12,61 +12,102 @@ class Login extends GetView<LoginController> {
   var tempbool = 0.obs;
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    var textsize = MediaQuery.of(context).textScaleFactor;
     return ResponsiveLayout(
       desktopBody: Scaffold(),
       mobileBody: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("lib/assets/bg/v3.jpg"),
-              fit: BoxFit.cover,
+        body: MediaQuery(
+          data: MediaQuery.of(context),
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("lib/assets/bg/v3.jpg"),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: SizedBox(
-                        width: size.width * .7,
-                        height: size.height * .1,
-                        child: Image.asset("lib/assets/logo/logo.png"),
-                      ),
-                    ),
-                    SizedBox(
-                      height: size.height * .025,
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: size.width * .02),
-                      child: Text(
-                        "Mobile Number",
-                        style: TextStyle(
-                          fontSize: size.height * .02,
-                          fontWeight: FontWeight.w600,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: SizedBox(
+                          width: size.width * .7,
+                          height: size.height * .1,
+                          child: Image.asset("lib/assets/logo/logo.png"),
                         ),
                       ),
-                    ),
-                    Obx(() => TextField(
+                      SizedBox(
+                        height: size.height * .025,
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * .02),
+                        child: Text(
+                          "Mobile Number",
+                          style: TextStyle(
+                            fontSize: textsize * 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      Obx(() => TextField(
+                            autofocus: true,
+                            enableSuggestions: true,
+                            enabled: !controller.isOtpSent.value,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9]')),
+                              LengthLimitingTextInputFormatter(10),
+                            ],
+                            onChanged: (value) {
+                              controller.validation(value);
+                            },
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              errorText: controller.errortext.value.isEmpty
+                                  ? null
+                                  : controller.errortext.value,
+                              border: OutlineInputBorder(),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: size.height * .019,
+                                horizontal: size.width * .03,
+                              ),
+                            ),
+                            style: TextStyle(
+                              fontSize: textsize * 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )),
+                      SizedBox(
+                        height: size.height * .02,
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * .02),
+                        child: Text(
+                          "OTP",
+                          style: TextStyle(
+                            fontSize: textsize * 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      Obx(
+                        () => TextField(
+                          enabled: controller.isOtpSent.value,
+                          textAlign: TextAlign.center,
                           autofocus: true,
-                          enableSuggestions: true,
-                          enabled: !controller.isOtpSent.value,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                            LengthLimitingTextInputFormatter(10),
-                          ],
-                          onChanged: (value) {
-                            controller.validation(value);
-                          },
                           keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(RegExp(r'[.*]')),
+                            LengthLimitingTextInputFormatter(4)
+                          ],
                           decoration: InputDecoration(
-                            errorText: controller.errortext.value.isEmpty
-                                ? null
-                                : controller.errortext.value,
                             border: OutlineInputBorder(),
                             contentPadding: EdgeInsets.symmetric(
                               vertical: size.height * .019,
@@ -74,68 +115,33 @@ class Login extends GetView<LoginController> {
                             ),
                           ),
                           style: TextStyle(
-                            fontSize: size.height * .02,
+                            fontSize: textsize * 15,
                             fontWeight: FontWeight.w500,
                           ),
-                        )),
-                    SizedBox(
-                      height: size.height * .02,
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: size.width * .02),
-                      child: Text(
-                        "OTP",
-                        style: TextStyle(
-                          fontSize: size.height * .02,
-                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
-                    Obx(
-                      () => TextField(
-                        enabled: controller.isOtpSent.value,
-                        textAlign: TextAlign.center,
-                        autofocus: true,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.deny(RegExp(r'[.*]')),
-                          LengthLimitingTextInputFormatter(4)
-                        ],
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: size.height * .019,
-                            horizontal: size.width * .03,
+                      SizedBox(
+                        height: size.height * .02,
+                      ),
+                      Center(
+                        child: Obx(
+                          () => ElevatedButton(
+                            style: ElevatedButton.styleFrom(),
+                            onPressed:
+                                // controller.isnumvalid.value == true
+                                //     ?
+                                () {
+                              controller.sendOtp();
+                            },
+                            // : null,
+                            child: Text(controller.isOtpSent.value == false
+                                ? "Request OTP"
+                                : "Login"),
                           ),
                         ),
-                        style: TextStyle(
-                          fontSize: size.height * .02,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: size.height * .02,
-                    ),
-                    Center(
-                      child: Obx(
-                        () => ElevatedButton(
-                          style: ElevatedButton.styleFrom(),
-                          onPressed:
-                              // controller.isnumvalid.value == true
-                              //     ?
-                              () {
-                            controller.sendOtp();
-                          },
-                          // : null,
-                          child: Text(controller.isOtpSent.value == false
-                              ? "Request OTP"
-                              : "Login"),
-                        ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

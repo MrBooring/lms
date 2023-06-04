@@ -15,6 +15,7 @@ class VideoContent extends StatelessWidget {
   var active = false.obs;
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Expanded(
       child: SizedBox(
         // height: size.height * .7,
@@ -96,6 +97,7 @@ class CourseOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
       padding: EdgeInsets.all(15),

@@ -13,6 +13,7 @@ class CourseListCard extends StatefulWidget {
 class _CourseListCardState extends State<CourseListCard> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         Get.toNamed("/courseinfo");

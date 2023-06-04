@@ -12,6 +12,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
   List couseincludings = [];
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Padding(

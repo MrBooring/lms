@@ -8,6 +8,7 @@ class Quiz extends GetView<WatchCourseController> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Expanded(
       child: Obx(
         () => Padding(

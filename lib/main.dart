@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lms/view/routes/routes.dart';
 
+import 'util/utility.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -18,6 +20,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      supportedLocales: [
+        Locale('en', 'US'),
+      ],
       theme: ThemeData.light().copyWith(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),

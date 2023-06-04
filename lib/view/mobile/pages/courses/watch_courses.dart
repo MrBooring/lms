@@ -9,6 +9,7 @@ class WatchCourse extends GetView<WatchCourseController> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: Obx(() => Column(

@@ -13,6 +13,7 @@ class Enrolled extends StatefulWidget {
 class _EnrolledState extends State<Enrolled> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.orange.shade100, // appBar: AppBar(
       //   title: Text(

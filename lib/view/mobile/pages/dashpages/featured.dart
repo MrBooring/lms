@@ -13,6 +13,8 @@ class Featured extends StatefulWidget {
 class _FeaturedState extends State<Featured> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    var textsize = MediaQuery.of(context).textScaleFactor;
     return Scaffold(
       drawer: SideMenu(),
       appBar: AppBar(
@@ -40,7 +42,7 @@ class _FeaturedState extends State<Featured> {
         title: Text(
           "Learn about your Health",
           style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                fontSize: size.height * .022,
+                fontSize: textsize * 15,
               ),
           // style: TextStyle(
           //   fontSize: size.height * .028,
@@ -107,25 +109,6 @@ class _FeaturedState extends State<Featured> {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: size.height,
-              //   child: ListView.builder(
-              //     itemCount: 3,
-              //     itemBuilder: (context, a) {
-              //       return SizedBox(
-              //         height: size.height * .3,
-              //         child: ListView.builder(
-              //           itemCount: 5,
-              //           shrinkWrap: true,
-              //           scrollDirection: Axis.horizontal,
-              //           itemBuilder: (context, index) {
-              //             return CourseListCard();
-              //           },
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // )
               Expanded(
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
