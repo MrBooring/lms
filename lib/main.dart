@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lms/view/routes/routes.dart';
 
-import 'util/utility.dart';
-
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: const MyApp()));
 }
@@ -36,6 +34,9 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.orange.shade100,
           // backgroundColor: Color(0xffffba89),
         ),
+        // textTheme: TextTheme().copyWith(
+        //   labelMedium: TextStyle(),
+        // ),
       ),
       initialRoute: "/",
       getPages: routes,

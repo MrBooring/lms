@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lms/controllers/watch_course_controller.dart';
-import 'package:lms/util/utility.dart';
 
 class Quiz extends GetView<WatchCourseController> {
   const Quiz({super.key});
@@ -21,13 +20,16 @@ class Quiz extends GetView<WatchCourseController> {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              Row(
-                children: [
-                  Text(
-                    "Question ${controller.questionNum}/${controller.courseIncludings[controller.activeStep.value]["quizQuestions"].length}",
-                    style: Theme.of(context).textTheme.labelLarge,
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "Question ${controller.questionNum}/${controller.courseIncludings[controller.activeStep.value]["quizQuestions"].length}",
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ],
+                ),
               ),
               Text(
                 controller.courseIncludings[controller.activeStep.value]

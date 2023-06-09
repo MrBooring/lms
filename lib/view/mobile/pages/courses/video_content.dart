@@ -2,15 +2,16 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lms/controllers/watch_course_controller.dart';
-import 'package:lms/util/utility.dart';
 import 'package:lms/view/mobile/widgets/videoplayer.dart';
 
 // ignore: must_be_immutable
 class VideoContent extends StatelessWidget {
   VideoContent({
     super.key,
+    required this.courseno,
   });
 
+  final courseno;
   var controller = Get.find<WatchCourseController>();
   var active = false.obs;
   @override
@@ -28,7 +29,9 @@ class VideoContent extends StatelessWidget {
               child: IgnorePointer(
                 ignoring: !controller.checkPrevousCompleted(),
                 child: Stack(children: [
-                  VideoDisplay(),
+                  VideoDisplay(
+                    courseno: courseno,
+                  ),
                   controller.isPreviousCompleted == false
                       ? Center(
                           child: ClipRect(

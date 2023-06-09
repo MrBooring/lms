@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lms/util/utility.dart';
 import 'package:intl/intl.dart';
+import 'package:lms/data/temp_courses.dart';
 
 class Enrolled extends StatefulWidget {
   const Enrolled({super.key});
@@ -116,102 +116,96 @@ class _EnrolledState extends State<Enrolled> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Continue : ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(fontWeight: FontWeight.bold)
-                        // style: TextStyle(
-                        //   fontSize: size.height * .025,
-                        //   fontWeight: FontWeight.bold,
-                        //   // color: Colors.blue.shade900,
-                        // ),
-                        ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            spreadRadius: -10,
-                            blurRadius: 10,
-                            offset: Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: ListTile(
-                        tileColor: Colors.transparent,
-                        dense: true,
-                        isThreeLine: true,
-                        leading: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.play_arrow,
-                            size: size.height * .035,
-                          ),
-                        ),
-                        title: Text("First Aid Course",
-                            style: Theme.of(context).textTheme.titleMedium!
+                    // Text("Continue : ",
+                    //     style: Theme.of(context)
+                    //         .textTheme
+                    //         .titleLarge!
+                    //         .copyWith(fontWeight: FontWeight.bold)
+                    //     // style: TextStyle(
+                    //     //   fontSize: size.height * .025,
+                    //     //   fontWeight: FontWeight.bold,
+                    //     //   // color: Colors.blue.shade900,
+                    //     // ),
+                    //     ),
+                    // Container(
+                    //   decoration: const BoxDecoration(
+                    //     color: Colors.white,
+                    //     boxShadow: [
+                    //       BoxShadow(
+                    //         color: Colors.black26,
+                    //         spreadRadius: -10,
+                    //         blurRadius: 10,
+                    //         offset: Offset(0, 10),
+                    //       ),
+                    //     ],
+                    //   ),
+                    //   child: ListTile(
+                    //     tileColor: Colors.transparent,
+                    //     dense: true,
+                    //     isThreeLine: true,
+                    //     leading: IconButton(
+                    //       onPressed: () {},
+                    //       icon: Icon(
+                    //         Icons.play_arrow,
+                    //         size: size.height * .035,
+                    //       ),
+                    //     ),
+                    //     title: Text("First Aid Course",
+                    //         style: Theme.of(context).textTheme.titleMedium!
 
-                            // style: TextStyle(
-                            //     fontWeight: FontWeight.bold,
-                            //     fontSize: size.height * .025),
-                            ),
-                        subtitle: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.stop,
-                                  size: size.height * .02,
-                                ),
-                                SizedBox(
-                                  width: size.width * .03,
-                                ),
-                                Text("Hand Positions for a CPR",
-                                    style:
-                                        Theme.of(context).textTheme.labelMedium
-                                    // style: TextStyle(
-                                    //   fontWeight: FontWeight.bold,
-                                    // ),
-                                    ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: size.height * .005,
-                            ),
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  maxRadius: size.height * .01,
-                                  backgroundColor: Colors.transparent,
-                                  child: const FlutterLogo(),
-                                ),
-                                SizedBox(
-                                  width: size.width * .03,
-                                ),
-                                Text("Dr. Dikshit Deshpande",
-                                    style:
-                                        Theme.of(context).textTheme.labelSmall),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                    //         // style: TextStyle(
+                    //         //     fontWeight: FontWeight.bold,
+                    //         //     fontSize: size.height * .025),
+                    //         ),
+                    //     subtitle: Column(
+                    //       children: [
+                    //         Row(
+                    //           children: [
+                    //             Icon(
+                    //               Icons.stop,
+                    //               size: size.height * .02,
+                    //             ),
+                    //             SizedBox(
+                    //               width: size.width * .03,
+                    //             ),
+                    //             Text("Hand Positions for a CPR",
+                    //                 style:
+                    //                     Theme.of(context).textTheme.labelMedium
+                    //                 // style: TextStyle(
+                    //                 //   fontWeight: FontWeight.bold,
+                    //                 // ),
+                    //                 ),
+                    //           ],
+                    //         ),
+                    //         SizedBox(
+                    //           height: size.height * .005,
+                    //         ),
+                    //         Row(
+                    //           children: [
+                    //             CircleAvatar(
+                    //               maxRadius: size.height * .01,
+                    //               backgroundColor: Colors.transparent,
+                    //               child: const FlutterLogo(),
+                    //             ),
+                    //             SizedBox(
+                    //               width: size.width * .03,
+                    //             ),
+                    //             Text("Dr. Dikshit Deshpande",
+                    //                 style:
+                    //                     Theme.of(context).textTheme.labelSmall),
+                    //           ],
+                    //         )
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text("Your Courses : ",
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
                                     fontWeight: FontWeight.bold,
-                                  )
-                          // style: TextStyle(
-                          //   fontSize: size.height * .025,
-                          //   fontWeight: FontWeight.bold,
-                          //   // color: Colors.blue.shade900,
-                          // ),
-                          ),
+                                  )),
                     ),
                     Expanded(
                       child: SizedBox(
@@ -223,12 +217,12 @@ class _EnrolledState extends State<Enrolled> {
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
                           ),
-                          itemCount: 5,
+                          itemCount: courses.length,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () {
-                                Get.toNamed("/watchcourse");
+                                Get.toNamed("/watchcourse", arguments: [index]);
                               },
                               child: Card(
                                 child: Column(
@@ -252,7 +246,7 @@ class _EnrolledState extends State<Enrolled> {
                                           Padding(
                                             padding: const EdgeInsets.all(5),
                                             child: Text(
-                                              "First Aid Masterclass",
+                                              courses[index]['name'].toString(),
                                               style: ThemeData()
                                                   .textTheme
                                                   .labelLarge!

@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:lms/controllers/watch_course_controller.dart';
 
 class VideoPlayer extends GetView<WatchCourseController> {
-  const VideoPlayer({super.key});
-
+  const VideoPlayer({required this.courseno, super.key});
+  final courseno;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,12 +17,14 @@ class VideoPlayer extends GetView<WatchCourseController> {
 }
 
 class VideoDisplay extends GetView<WatchCourseController> {
-  const VideoDisplay({super.key});
-
+  const VideoDisplay({required this.courseno, super.key});
+  final courseno;
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: VideoPlayer(),
+      child: VideoPlayer(
+        courseno: courseno,
+      ),
     );
   }
 }

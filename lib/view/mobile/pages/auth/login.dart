@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lms/controllers/login_controller.dart';
-import 'package:lms/util/utility.dart';
 import 'package:lms/view/responsive.dart';
 
 // ignore: must_be_immutable

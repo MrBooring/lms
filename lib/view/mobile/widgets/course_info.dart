@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:lms/util/utility.dart';
+import 'package:get/get.dart';
+import 'package:lms/data/temp_courses.dart';
 
 class ProjectInfo extends StatefulWidget {
   const ProjectInfo({super.key});
@@ -13,6 +16,8 @@ class _ProjectInfoState extends State<ProjectInfo> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var textsize = MediaQuery.of(context).textScaleFactor;
+    var coursenum = Get.arguments[0];
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -32,7 +37,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "What is COVID-19 Bootcamp From zero to hero in medical",
+                    courses[coursenum]['name'].toString(),
                     style: TextStyle(
                       fontSize: size.height * .03,
                       fontWeight: FontWeight.bold,
@@ -54,12 +59,12 @@ class _ProjectInfoState extends State<ProjectInfo> {
                       ),
                       Divider(),
                       Text(
-                        "50 words => Join our comprehensive medical course for aspiring healthcare professionals. Gain theoretical knowledge and practical skills in anatomy, physiology, pathology, pharmacology, and clinical practice. Start your transformative journey now!",
+                        courses[coursenum]['description'].toString(),
                         textAlign: TextAlign.justify,
                         // overflow: TextOverflow.el lipsis,
                         style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: size.height * .02,
+                          fontWeight: FontWeight.w500,
+                          fontSize: textsize * 15,
                         ),
                       ),
                       Padding(
@@ -69,7 +74,8 @@ class _ProjectInfoState extends State<ProjectInfo> {
                             Text(
                               "Created By Dr Siddhant Vedpathak",
                               style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                                fontSize: textsize * 13,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ],
@@ -85,7 +91,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                               width: size.width * .03,
                             ),
                             const Text(
-                              "23 Lessons",
+                              "2 Lessons",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
@@ -158,107 +164,30 @@ class _ProjectInfoState extends State<ProjectInfo> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.videocam),
-                            SizedBox(
-                              width: size.width * .03,
+                      ListView.builder(
+                        itemCount: courses[coursenum]['courseContent'].length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: Row(
+                              children: [
+                                const Icon(Icons.star_border_outlined),
+                                SizedBox(
+                                  width: size.width * .03,
+                                ),
+                                Text(
+                                  courses[coursenum]['courseContent'][index]
+                                          ['contentType']
+                                      .toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
                             ),
-                            const Text(
-                              "CPR",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.assessment_outlined),
-                            SizedBox(
-                              width: size.width * .03,
-                            ),
-                            const Text(
-                              "Assesment",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.videocam),
-                            SizedBox(
-                              width: size.width * .03,
-                            ),
-                            const Text(
-                              "CPR",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.assessment_outlined),
-                            SizedBox(
-                              width: size.width * .03,
-                            ),
-                            const Text(
-                              "Assesment",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.videocam),
-                            SizedBox(
-                              width: size.width * .03,
-                            ),
-                            const Text(
-                              "CPR",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.assessment_outlined),
-                            SizedBox(
-                              width: size.width * .03,
-                            ),
-                            const Text(
-                              "Assesment",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
+                          );
+                        },
                       ),
                     ],
                   ),

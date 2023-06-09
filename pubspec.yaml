@@ -72,7 +72,7 @@ flutter:
     - lib/assets/tempbanner/
     - lib/assets/userimages/
     - lib/assets/bg/
-    - lib/assets/video/butterfly.mp4
+    - lib/assets/video/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

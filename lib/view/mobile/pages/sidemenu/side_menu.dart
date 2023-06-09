@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lms/util/utility.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
@@ -21,7 +20,9 @@ class _SideMenuState extends State<SideMenu> {
               DrawerHeader(
                 child: Text(
                   'Siddhant Vedpathak',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+                  // style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 decoration: BoxDecoration(
                   color: Colors.orange.shade100,

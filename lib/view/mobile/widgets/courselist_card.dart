@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:lms/util/utility.dart';
+import 'package:lms/data/temp_courses.dart';
 
 class CourseListCard extends StatefulWidget {
-  const CourseListCard({super.key});
-
+  const CourseListCard({super.key, required this.index});
+  final index;
   @override
   State<CourseListCard> createState() => _CourseListCardState();
 }
@@ -16,7 +16,7 @@ class _CourseListCardState extends State<CourseListCard> {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        Get.toNamed("/courseinfo");
+        Get.toNamed("/courseinfo", arguments: [widget.index]);
       },
       child: Card(
         child: Container(
@@ -31,7 +31,7 @@ class _CourseListCardState extends State<CourseListCard> {
                   height: size.height * .14,
                   // color: Colors.orange.shade100,
                   child: Image.asset(
-                    "lib/assets/tempbanner/b1.jpg",
+                    "lib/assets/tempbanner/b${widget.index}.jpg",
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -44,7 +44,7 @@ class _CourseListCardState extends State<CourseListCard> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 0),
-                      child: Text("The Complete Guide: First Aid ddv",
+                      child: Text(courses[widget.index]['name'].toString(),
                           maxLines: 2,
                           style: Theme.of(context).textTheme.labelLarge
                           // style: TextStyle(
@@ -53,7 +53,7 @@ class _CourseListCardState extends State<CourseListCard> {
                           // ),
                           ),
                     ),
-                    Text("Dr Dinesh dayanand",
+                    Text(courses[widget.index]['instructor'].toString(),
                         maxLines: 2,
                         style: Theme.of(context).textTheme.labelSmall),
                     Row(
@@ -83,7 +83,7 @@ class _CourseListCardState extends State<CourseListCard> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 3),
-                      child: Text("₹245",
+                      child: Text("Free",
                           style: Theme.of(context).textTheme.labelLarge),
                     )
                   ],

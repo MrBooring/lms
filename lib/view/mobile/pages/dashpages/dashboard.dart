@@ -28,10 +28,11 @@ class Dashboard extends GetView<DashController> {
     return ResponsiveLayout(
       desktopBody: Scaffold(),
       mobileBody: Scaffold(
+        backgroundColor: Colors.transparent,
         body: Obx(() => dashUiControll()),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            // color: Colors.white.withOpacity(.5),
             boxShadow: [
               BoxShadow(
                 blurRadius: 20,
@@ -48,9 +49,8 @@ class Dashboard extends GetView<DashController> {
               tabBorderRadius: 5,
               activeColor: Colors.black,
               rippleColor: Colors.grey.shade300,
-              // backgroundColor: Color.fromARGB(255, 215, 235, 253),
+              backgroundColor: Colors.white,
               hoverColor: Colors.grey.shade100,
-
               selectedIndex: controller.selectedItemIndex.value,
               onTabChange: (value) {
                 controller.selectedItemIndex.value = value;

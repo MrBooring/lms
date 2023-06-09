@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:lms/controllers/watch_course_controller.dart';
-import 'package:lms/util/utility.dart';
 
 class WatchCourse extends GetView<WatchCourseController> {
   const WatchCourse({super.key});
@@ -10,6 +9,7 @@ class WatchCourse extends GetView<WatchCourseController> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var courseno = Get.arguments[0];
     return Scaffold(
       body: SafeArea(
           child: Obx(() => Column(
@@ -24,7 +24,7 @@ class WatchCourse extends GetView<WatchCourseController> {
                       controller.activeStep.value = index;
                     },
                   ),
-                  controller.displayContent(),
+                  controller.displayContent(courseno),
                 ],
               ))),
     );

@@ -1,5 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:lms/util/utility.dart';
+import 'package:lms/data/temp_courses.dart';
 import 'package:lms/view/mobile/widgets/courselist_card.dart';
 import 'package:lms/view/mobile/pages/sidemenu/side_menu.dart';
 
@@ -19,8 +21,7 @@ class _FeaturedState extends State<Featured> {
       drawer: SideMenu(),
       appBar: AppBar(
         elevation: 0,
-        // backgroundColor: Colors.transparent,
-
+        // backgroundColor: Color.fromARGB(255, 243, 206, 151),
         foregroundColor: Colors.black,
         actions: [
           SizedBox(
@@ -109,13 +110,37 @@ class _FeaturedState extends State<Featured> {
                   ),
                 ),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      log(courses[0]['courseContent'][0]['content'].toString());
+                    },
+                    child: Chip(
+                      label: Text("English"),
+                    ),
+                  ),
+                  Chip(
+                    label: Text("Heart"),
+                  ),
+                  Chip(
+                    label: Text("Pathology"),
+                  ),
+                  Chip(
+                    label: Text("Clinical"),
+                  )
+                ],
+              ),
               Expanded(
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       mainAxisExtent: size.height * .28, crossAxisCount: 2),
-                  itemCount: 5,
+                  itemCount: courses.length,
                   itemBuilder: (context, index) {
-                    return CourseListCard();
+                    return CourseListCard(
+                      index: index,
+                    );
                   },
                 ),
               )

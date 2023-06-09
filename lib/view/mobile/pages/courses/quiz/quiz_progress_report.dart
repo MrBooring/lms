@@ -2,7 +2,6 @@ import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lms/controllers/watch_course_controller.dart';
-import 'package:lms/util/utility.dart';
 
 class QuizProgress extends GetView<WatchCourseController> {
   const QuizProgress({super.key});
@@ -46,27 +45,28 @@ class QuizProgress extends GetView<WatchCourseController> {
                   seekSize: 10,
                   seekColor: const Color(0xffeeeeee),
                   child: Center(
-                      child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        '${(controller.score / controller.courseIncludings[controller.activeStep.value]["quizQuestions"].length) * 100}%',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineLarge!
-                            .copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        'Accuracy',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: Colors.grey),
-                      ),
-                    ],
-                  )),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          '${(controller.score / controller.courseIncludings[controller.activeStep.value]["quizQuestions"].length) * 100}%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineLarge!
+                              .copyWith(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600),
+                        ),
+                        Text(
+                          'Accuracy',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .apply(color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               SizedBox(

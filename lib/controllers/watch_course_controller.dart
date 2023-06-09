@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:chewie/chewie.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:lms/data/temp_courses.dart';
 import 'package:lms/view/mobile/pages/courses/quiz/quiz.dart';
 import 'package:lms/view/mobile/pages/courses/quiz/quiz_layout.dart';
 import 'package:lms/view/mobile/pages/courses/quiz/quiz_progress_report.dart';
@@ -182,7 +183,7 @@ class WatchCourseController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    generateIcons();
+
     tabController = TabController(length: 4, vsync: this);
     tabController.animateTo(2);
   }
@@ -206,21 +207,32 @@ class WatchCourseController extends GetxController
     }
   }
 
-  displayContent() {
+  displayContent(courseno) {
+    generateIcons(courseno);
     switch (courseIncludings[activeStep.value]["contentTitle"]) {
       case "Quiz":
         videoPlayerController.dispose();
         return QuizLayout();
 
       default:
-        initVideoControllers(courseIncludings[activeStep.value]['content']);
-        return VideoContent();
+        initVideoControllers(courseno);
+        return VideoContent(
+          courseno: courseno,
+        );
     }
   }
 
-  generateIcons() {
-    for (int i = 0; i < courseIncludings.length; i++) {
-      if (courseIncludings[i]["contentTitle"] == "Episode") {
+  generateIcons(courseno) {
+    for (int i = 0; i < courses[courseno]["courseContent"].length; i++) {
+      iconList.clear();
+      // if (courseIncludings[i]["contentTitle"] == "Episode") {
+      //   iconList.add(Icon(Icons.videocam));
+      // } else {
+      //   iconList.add(Icon(Icons.assessment));
+      // }
+
+      if (courses[courseno]["courseContent"][i]['contentType'].toString() ==
+          "Episode") {
         iconList.add(Icon(Icons.videocam));
       } else {
         iconList.add(Icon(Icons.assessment));
@@ -234,18 +246,53 @@ class WatchCourseController extends GetxController
   late Duration videoDuration;
   var currentPos;
 
-  initVideoControllers(videopath) {
+  initVideoControllers(courseno) {
     try {
-      videoPlayerController = VideoPlayerController.asset(videopath,
+      videoPlayerController = VideoPlayerController.asset(
+          courses[courseno]['courseContent'][activeStep.value]['content']
+              .toString(),
           videoPlayerOptions: VideoPlayerOptions(
             allowBackgroundPlayback: false,
           ));
+
+      // videoPlayerController = VideoPlayerController.network(
+      //     "https://drive.google.com/file/d/1qrJ2yRHOESG5vq1QUewMxR-714NRxoPO",
+      //     videoPlayerOptions: VideoPlayerOptions(
+      //       allowBackgroundPlayback: false,
+      //     ));
       chewieController = ChewieController(
         videoPlayerController: videoPlayerController,
         looping: false,
         aspectRatio: 16 / 9,
         autoPlay: false,
         autoInitialize: true,
+        errorBuilder: (context, errorMessage) {
+          return Center(
+            child: Text(
+              errorMessage,
+              style: TextStyle(color: Colors.white),
+            ),
+          );
+          // return Dialog(
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       Padding(
+          //         padding: const EdgeInsets.all(10),
+          //         child: Text(
+          //           "We ran into an unexpected error",
+          //           style: TextStyle(
+          //             fontSize: 25,
+          //             fontWeight: FontWeight.bold,
+          //           ),
+          //         ),
+          //       ),
+          //       Text(errorMessage.toString())
+          //     ],
+          //   ),
+          // );
+        },
       );
 
       videoPlayerController.addListener(checkVideo);
